@@ -1,2 +1,2 @@
 ### Learning Javascript Concepts
-You can check out the repo at: [Javascript Progress](https://github.com/EnockKipkorir594/Javascript-Progress/blob/main/app/main.js))
+You can check out the repo at: [Javascript Progress](https://roadmap.sh/projects/js-greeting-builder)
