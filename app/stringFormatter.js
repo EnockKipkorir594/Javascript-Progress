@@ -1,15 +1,21 @@
 function cleanText(text){
-    while (text.first() === " "){
-        text.first().remove
-    }
+    return text.trim();
 
 }
+
 function capitalize(text){
-    return text.first().upper()
+    const cleaned = cleanText(text).toLowerCase();
+    if (cleaned.length === 0){
+        return '';
+    }
+    return cleaned[0].toUpperCase() + cleaned.slice[1];
 
 }
 function formatDisplayName(firstName, lastName){
-    let formatted = cleanText(firstName)
+    const myFirstName = capitalize(firstName);
+    const myLastName = capitalize(lastName);
 
-    return `${firstName}`
+    return `${myFirstName} ${myLastName}`;
 }
+
+console.log(formatDisplayName(' ava', ' kim'));
