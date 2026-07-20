@@ -22,7 +22,7 @@ function isEven(number){
 }
 //isEven(2);
 function isOdd(number){
-    return number % 2 != 0;
+    return number % 2 !== 0;
 }
 
 function describeNumber(number){
