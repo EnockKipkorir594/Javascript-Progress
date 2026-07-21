@@ -12,26 +12,53 @@ function calculator(num1: number,operator: string, num2: number ){
     }
     
 };
-import process from "process";
+
+import {readFile, writeFile} from 'fs/promises';
+
+async function saveHistory(entry:{num1: number, operator: string, num2: number, result: number}) {
+    let history = [];
+    try{
+        const data = await readFile('history.json', 'utf-8');
+        history = JSON.parse(data);
+
+    }catch{
+
+    }
+
+    history.push({...entry, timestamp: new Date(). toISOString()});
+    if (history.length > 10) history.shift();
+
+    await writeFile('history.json', JSON.stringify(history, null, 2));
+}
 
 //Read from command line 
-const args = process.argv.slice(2);
-const num1 = Number(args[0]);
-const operator = args[1];
-const num2 = Number(args[2]);
+async function main() {
+    const args = process.argv.slice(2);
+    const num1 = Number(args[0]);
+    const operator = args[1];
+    const num2 = Number(args[2]);
 
 //validate input 
 
-if (args.length !== 3){
-    console.error("Usage: npx ts-node calculator.ts <num1> <operator> <num2>");
-    process.exit(1);
+    if (args.length !== 3){
+        console.error("Usage: npx ts-node calculator.ts <num1> <operator> <num2>");
+        process.exit(1);
+    };
+
+    if (!num1 || !operator || !num2){
+        console.error("Error: Both arguments must be valid numbers");
+        process.exit(1);
+    };
+
+    const result = calculator(num1, operator, num2);
+    console.log(`${num1} ${operator} ${num2} = ${result}`);
+
+    await saveHistory({ num1, operator, num2, result });
+
+    
 };
 
-if (isNaN(num1) || isNaN(num2)){
-    console.error("Error: Both arguments must be valid numbers");
-    process.exit(1);
-};
+main();
 
-const result = calculator(num1, operator, num2);
-console.log(`${num1} ${operator} ${num2} = ${result}`);
+//Make to quote the asterisk so that bash does not interprate it as a wildcard.
 
