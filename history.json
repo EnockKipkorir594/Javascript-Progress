@@ -1,0 +1,30 @@
+[
+  {
+    "num1": 7,
+    "operator": "/",
+    "num2": 7,
+    "result": 1,
+    "timestamp": "2026-07-21T10:09:11.099Z"
+  },
+  {
+    "num1": 7,
+    "operator": "*",
+    "num2": 7,
+    "result": 49,
+    "timestamp": "2026-07-21T10:09:20.490Z"
+  },
+  {
+    "num1": 10,
+    "operator": "*",
+    "num2": 10,
+    "result": 100,
+    "timestamp": "2026-07-21T10:10:24.833Z"
+  },
+  {
+    "num1": 10,
+    "operator": "+",
+    "num2": 10,
+    "result": 20,
+    "timestamp": "2026-07-21T10:10:34.089Z"
+  }
+]
